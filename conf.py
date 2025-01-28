@@ -30,6 +30,7 @@ exclude_patterns = [
     ".DS_Store",
     "**/pandoc_ipynb/inputs/*",
     ".nox/*",
+    '.venv/*',
     "README.md",
     "**/.ipynb_checkpoints/*",
     "jupyter_execute",
