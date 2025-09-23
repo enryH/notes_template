@@ -19,16 +19,8 @@ jobs:
             
             // Create detailed comment with PR information from payload
             const comment = `
-            - see the preview of the website at: https://${context.repo.owner}.github.io/${context.repo.repo}/pr-${payload.number}/
-
-            - Repository: ${context.repo.repo}
-            -  ${context.repo.repo}
-            
-            ### Basic Information
-            - PR Number: #${payload.number}
-           
-            ### Author Information
-            - Author: @${payload.pull_request.user.login}
+            See the preview of the website at:
+            - https://${context.repo.owner}.github.io/${context.repo.repo}/pr-${payload.number}/
             `;
             
             github.rest.issues.createComment({
