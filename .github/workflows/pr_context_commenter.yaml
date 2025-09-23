@@ -1,0 +1,39 @@
+name: PR Context Commenter
+
+on:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  add-context:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Add PR Context Comment
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const payload = context.payload;
+            
+            // Create detailed comment with PR information from payload
+            const comment = `
+            - see the preview of the website at: https://enryh.github.io/notes_template/pr-${payload.number}/
+
+            - Repository: ${context.repo.repo}
+            -  {context.repo.repo}
+            
+            ### Basic Information
+            - PR Number: #${payload.number}
+           
+            ### Author Information
+            - Author: @${payload.pull_request.user.login}
+            `;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
