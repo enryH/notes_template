@@ -1,0 +1,32 @@
+name: Publish Link of website for a Pull Request
+
+on:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  add-context:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Add PR Context Comment
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const payload = context.payload;
+            
+            // Create detailed comment with PR information from payload
+            const comment = `
+            See the preview of the website at:
+            - https://${context.repo.owner}.github.io/${context.repo.repo}/pr-${payload.number}/
+
+            `;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
