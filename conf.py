@@ -46,11 +46,15 @@ nb_execution_mode = "auto"
 
 myst_enable_extensions = ["dollarmath", "amsmath"]
 
-# Plolty support through require javascript library
+# Plotly: ensure plotly plots render on GitHub Pages
+# import os
+# os.environ["PLOTLY_RENDERER"] = "notebook"
+
 # https://myst-nb.readthedocs.io/en/latest/render/interactive.html#plotly
-html_js_files = [
-    "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"
-]
+# Maybe still needed for older plotly versions
+# html_js_files = [
+#     # "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"
+# ]
 
 # https://myst-nb.readthedocs.io/en/latest/configuration.html
 # Execution
@@ -59,10 +63,9 @@ nb_execution_raise_on_error = True
 nb_merge_streams = True
 
 # https://myst-nb.readthedocs.io/en/latest/authoring/custom-formats.html#write-custom-formats
-nb_custom_formats = {
-    ".py": ["jupytext.reads", {"fmt": "py:percent"}]
-}
-
+# nb_custom_formats = {
+#     ".py": ["jupytext.reads", {"fmt": "py:percent"}]
+# }
 
 # -- Options for HTML output -------------------------------------------------
 
