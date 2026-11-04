@@ -61,7 +61,7 @@ contain extensions and themes that are used additionally to sphinx to build the 
 The layout of the website is defined in the `index.md` file.
 
 > Have look at `.github/workflows/build_website.yaml` to see how the site is built
-> if you are interested.
+> if you are interested, which publishes the `.build` folder on the `gh-pages` branch.
 
 - Open a terminal (GitHub Codespaces)
 - install required packages from [`requirements.txt`](requirements.txt):
@@ -84,11 +84,13 @@ The layout of the website is defined in the `index.md` file.
 
 Follow 
 [these instructions](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) 
-to publish the website using GitHub Pages.
+to publish the website using GitHub Pages, but please use the `gh-pages` branch:
 
 - Select the `gh-pages` branch as the source for the GitHub Pages site (currently step 7)
 - add the deployed url to your "About" on the right sight of the repository
 
+> The `gh-pages` branch is not connected to the `main` branch or any other branch. It 
+> is only used to serve the build website.
 
 ## Changing the topic
 
